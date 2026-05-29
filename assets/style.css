@@ -1,0 +1,592 @@
+/* MobiCast — global stylesheet */
+
+/* =========================================================================
+   Reset & base
+   ========================================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1a1a2e;
+  background-color: #f4f6f9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* =========================================================================
+   App root
+   ========================================================================= */
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#page-content {
+  flex: 1;
+  padding: 32px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* =========================================================================
+   Navigation bar
+   ========================================================================= */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e8eaed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar--hidden {
+  display: none !important;
+}
+
+.navbar-brand {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #1a1a2e;
+}
+
+.navbar-brand:hover {
+  color: #4361ee;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-user {
+  font-size: 13px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.navbar-logout {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.navbar-logout:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* =========================================================================
+   Login page
+   ========================================================================= */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 24px;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-logo {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.login-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.login-input:focus {
+  border-color: #4361ee;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
+  background: #ffffff;
+}
+
+.login-button {
+  width: 100%;
+  padding: 11px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #4361ee;
+  border: none;
+  border-radius: 8px;
+  margin-top: 4px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.login-button:hover {
+  background: #3451d1;
+}
+
+.login-button:active {
+  transform: scale(0.99);
+}
+
+.login-error {
+  font-size: 13px;
+  color: #dc2626;
+  text-align: center;
+  min-height: 18px;
+}
+
+/* =========================================================================
+   Generic page utilities (used from PROMPT 06 onward)
+   ========================================================================= */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e8eaed;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #4361ee;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: #3451d1;
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover {
+  background: #f3f4f6;
+}
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.badge--green  { background: #dcfce7; color: #16a34a; }
+.badge--orange { background: #fff7ed; color: #ea580c; }
+.badge--red    { background: #fee2e2; color: #dc2626; }
+.badge--blue   { background: #eff6ff; color: #2563eb; }
+
+/* =========================================================================
+   Form elements (new analysis page)
+   ========================================================================= */
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus {
+  border-color: #4361ee;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
+  background: #ffffff;
+}
+
+.form-error {
+  font-size: 13px;
+  color: #dc2626;
+  min-height: 18px;
+}
+
+/* =========================================================================
+   Data source slots
+   ========================================================================= */
+
+.source-slot {
+  margin-bottom: 4px;
+}
+
+.source-slot-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.source-slot-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.source-slot-note {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.source-divider {
+  border: none;
+  border-top: 1px solid #f3f4f6;
+  margin: 20px 0;
+}
+
+/* =========================================================================
+   Upload zone (dcc.Upload wrapper)
+   ========================================================================= */
+
+.upload-zone {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: #fafafa;
+}
+
+.upload-zone:hover {
+  border-color: #4361ee;
+  background: #f0f3ff;
+}
+
+.upload-icon {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.upload-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.filename-display {
+  font-size: 12px;
+  color: #16a34a;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* =========================================================================
+   Warning banner (Erasmus+ conditional section)
+   ========================================================================= */
+
+.warning-banner {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* =========================================================================
+   Erasmus+ checkbox
+   ========================================================================= */
+
+.erasmus-checkbox label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* =========================================================================
+   Action row (bottom of form)
+   ========================================================================= */
+
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* =========================================================================
+   Step 2 — Validation cards
+   ========================================================================= */
+
+.validation-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.validation-source-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* =========================================================================
+   Column mapping list
+   ========================================================================= */
+
+.column-mapping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.column-mapping-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.column-mapping-role {
+  color: #6b7280;
+  min-width: 180px;
+}
+
+.column-mapping-fail .column-mapping-role {
+  color: #ea580c;
+  font-weight: 500;
+}
+
+.column-mapping-arrow {
+  color: #d1d5db;
+  flex-shrink: 0;
+}
+
+.column-mapping-col {
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: #1a1a2e;
+}
+
+.column-mapping-dropdown {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* =========================================================================
+   File preview (html.Details)
+   ========================================================================= */
+
+.preview-details {
+  margin: 12px 0;
+  border: 1px solid #f3f4f6;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.preview-details summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: #4361ee;
+  font-weight: 500;
+  padding: 2px 0;
+  user-select: none;
+  list-style: none;
+}
+
+.preview-details summary::-webkit-details-marker { display: none; }
+
+.preview-details summary::before {
+  content: "▶ ";
+  font-size: 10px;
+}
+
+.preview-details[open] summary::before {
+  content: "▼ ";
+}
+
+.preview-details[open] {
+  padding-bottom: 12px;
+}
+
+/* =========================================================================
+   Progress section
+   ========================================================================= */
+
+.progress-section {
+  margin-top: 24px;
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.progress-bar-container {
+  height: 8px;
+  background: #e8eaed;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #4361ee;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.progress-steps-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.progress-step-item {
+  font-size: 11px;
+  color: #9ca3af;
+  background: #f9fafb;
+  border: 1px solid #e8eaed;
+  border-radius: 20px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
