@@ -3,15 +3,15 @@ services:
     build: .
     ports:
       - "8050:8050"
-    volumes:
-      - mobicast_data:/app/data
-      - mobicast_db:/app/db
+    restart: unless-stopped
     environment:
-      - SECRET_KEY=change-this-to-a-random-secret-key
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
       - DATABASE_PATH=/app/db/mobicast.db
       - DATA_DIR=/app/data
-      - DEBUG=false
-    restart: unless-stopped
+    volumes:
+      - ./data/defaults:/app/data/defaults:ro   # bind mount, read-only
+      - mobicast_data:/app/data/analyses
+      - mobicast_db:/app/db
 
 volumes:
   mobicast_data:

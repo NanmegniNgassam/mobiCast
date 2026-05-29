@@ -1,0 +1,38 @@
+# MobiCast reference data files - place manually in data/defaults/ before running
+# Covers: .csv, .CSV (Windows uppercase artifact), .xlsx, and extension-less files
+data/defaults/*.csv
+data/defaults/*.CSV
+data/defaults/*.xlsx
+data/defaults/ErasmusPlus_*
+data/defaults/oecd_*
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# SQLite database
+*.db
+
+# Runtime data directories
+data/tmp/
+data/analyses/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

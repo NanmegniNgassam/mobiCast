@@ -25,13 +25,30 @@ DEBUG: bool = os.environ.get("DEBUG", "false").lower() == "true"
 # Directory containing bundled reference files shipped with the image.
 DEFAULTS_DIR: str = os.path.join(DATA_DIR, "defaults")
 
-# Default OECD scholarship reference file (used when the user does not upload one).
-DEFAULT_OECD_PATH: str = os.path.join(DEFAULTS_DIR, "oecd_scholarships.csv")
+# Scan defaults dir once; used by both path constants below.
+_defaults_files: list[str] = os.listdir(DEFAULTS_DIR) if os.path.isdir(DEFAULTS_DIR) else []
 
-# Default Erasmus+ mobility matrix files (used when the user does not upload them).
-DEFAULT_ERASMUS_PATHS: list[str] = [
-    os.path.join(DEFAULTS_DIR, "erasmus_mobility.xlsx"),
-]
+# Default OECD scholarship reference file.
+# Matched case-insensitively and without requiring a specific extension so the file
+# works whether the host saved it as .csv or .CSV (common Windows artifact).
+DEFAULT_OECD_PATH: str = next(
+    (
+        os.path.join(DEFAULTS_DIR, f)
+        for f in _defaults_files
+        if f.lower().startswith("oecd_scholarships")
+    ),
+    os.path.join(DEFAULTS_DIR, "oecd_scholarships.csv"),  # fallback path for error messages
+)
+
+# Default Erasmus+ mobility matrix files.
+# No extension filter: files downloaded from the Erasmus+ portal have no .csv extension.
+DEFAULT_ERASMUS_PATHS: list[str] = sorted(
+    [
+        os.path.join(DEFAULTS_DIR, f)
+        for f in _defaults_files
+        if f.startswith("ErasmusPlus_KA1_")
+    ]
+)
 
 # Temporary upload directory - cleared after each analysis is persisted.
 TMP_DIR: str = os.path.join(DATA_DIR, "tmp")

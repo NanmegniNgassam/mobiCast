@@ -1,0 +1,17 @@
+# Exclude reference data files - mounted at runtime via bind mount in docker-compose.yml
+# Covers: .csv, .CSV (Windows uppercase artifact), .xlsx, and extension-less files
+data/defaults/*.csv
+data/defaults/*.CSV
+data/defaults/*.xlsx
+data/defaults/ErasmusPlus_*
+data/defaults/oecd_*
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Dev artifacts
+.git/
+.env
+*.egg-info/
