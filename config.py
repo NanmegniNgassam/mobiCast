@@ -1,4 +1,4 @@
-"""MobiCast — application configuration.
+"""MobiCast - application configuration.
 
 All values are read from environment variables so the same image can run
 in development and production without code changes.
@@ -6,7 +6,7 @@ in development and production without code changes.
 
 import os
 
-# Flask/Dash secret key — must be changed in production.
+# Flask/Dash secret key - must be changed in production.
 SECRET_KEY: str = os.environ.get(
     "SECRET_KEY", "dev-secret-key-please-change-in-production"
 )
@@ -33,7 +33,7 @@ DEFAULT_ERASMUS_PATHS: list[str] = [
     os.path.join(DEFAULTS_DIR, "erasmus_mobility.xlsx"),
 ]
 
-# Temporary upload directory — cleared after each analysis is persisted.
+# Temporary upload directory - cleared after each analysis is persisted.
 TMP_DIR: str = os.path.join(DATA_DIR, "tmp")
 
 # Directory where completed analyses are stored.

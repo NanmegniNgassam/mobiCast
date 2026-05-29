@@ -1,4 +1,4 @@
-"""MobiCast — authentication helpers.
+"""MobiCast - authentication helpers.
 
 Provides the Flask-Login integration: LoginManager setup, User model,
 credential verification and session management utilities.

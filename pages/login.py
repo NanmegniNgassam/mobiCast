@@ -1,4 +1,4 @@
-"""MobiCast — login page (URL: /login)."""
+"""MobiCast - login page (URL: /login)."""
 
 import dash
 from dash import Input, Output, State, callback, dcc, html

@@ -1,4 +1,4 @@
-"""MobiCast — Dash application entry point."""
+"""MobiCast - Dash application entry point."""
 
 import logging
 
@@ -21,7 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Database — initialise on startup (idempotent)
+# Database - initialise on startup (idempotent)
 # ---------------------------------------------------------------------------
 
 init_db()
@@ -55,7 +55,7 @@ app.layout = html.Div(
     children=[
         # URL tracker (no page reload on pathname change)
         dcc.Location(id="url", refresh=False),
-        # Redirect target — refresh=True triggers a full page reload when href is set
+        # Redirect target - refresh=True triggers a full page reload when href is set
         dcc.Location(id="redirect", refresh=True),
         # Client-side session store (user info for display, not for auth decisions)
         dcc.Store(id="session-store", storage_type="session"),
@@ -105,7 +105,7 @@ def protect_routes(pathname):
     if pathname == "/login":
         return dash.no_update
     if not current_user.is_authenticated:
-        logger.debug("Unauthenticated access to %s — redirecting to /login", pathname)
+        logger.debug("Unauthenticated access to %s - redirecting to /login", pathname)
         return "/login"
     if pathname == "/":
         return "/analyses/new"

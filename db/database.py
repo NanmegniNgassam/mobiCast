@@ -1,4 +1,4 @@
-"""MobiCast — SQLite connection module and data access layer.
+"""MobiCast - SQLite connection module and data access layer.
 
 Schema
 ------
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS source_files (
 # Connection
 # ---------------------------------------------------------------------------
 
-# Columns added after the initial schema — applied automatically on startup.
+# Columns added after the initial schema - applied automatically on startup.
 _USER_MIGRATIONS = [
     ("first_name", "TEXT"),
     ("last_name",  "TEXT"),
@@ -70,7 +70,7 @@ def _apply_migrations(conn: sqlite3.Connection) -> None:
     """Add any columns missing from existing tables (forward-only migrations).
 
     Uses PRAGMA table_info so the ALTER TABLE only runs when the column does
-    not yet exist — safe to call on every startup regardless of DB age.
+    not yet exist - safe to call on every startup regardless of DB age.
     """
     existing = {
         row["name"]
@@ -102,7 +102,7 @@ def get_connection() -> sqlite3.Connection:
 def init_db() -> None:
     """Create all tables and seed a default admin user if none exist.
 
-    Idempotent — safe to call on every application startup.
+    Idempotent - safe to call on every application startup.
     Default credentials: admin / admin (should be changed after first login).
     """
     os.makedirs(os.path.dirname(os.path.abspath(DATABASE_PATH)), exist_ok=True)

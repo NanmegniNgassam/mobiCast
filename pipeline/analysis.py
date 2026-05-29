@@ -1,4 +1,4 @@
-"""MobiCast — analysis and prediction pipeline.
+"""MobiCast - analysis and prediction pipeline.
 
 Takes the cleaned DataFrame produced by pipeline.cleaning.clean_and_merge()
 and returns a structured result dict consumed by the results view.
@@ -165,7 +165,7 @@ def _build_correlations(df_agg: pd.DataFrame) -> dict[str, dict]:
         # Replace any constant columns with near-zero std to avoid NaN in corr matrix.
         if sub.std().eq(0).any():
             logger.debug(
-                "Constant column detected for %s — correlation may be NaN", dest_code
+                "Constant column detected for %s - correlation may be NaN", dest_code
             )
 
         matrix = sub.corr(method="pearson").round(4).fillna(0).values.tolist()
@@ -292,7 +292,7 @@ def run_analysis(df: pd.DataFrame) -> dict[str, Any]:
               ]
             }
     """
-    logger.info("run_analysis started — %d rows in input DataFrame", len(df))
+    logger.info("run_analysis started - %d rows in input DataFrame", len(df))
 
     df_agg = _aggregate_by_destination(df)
     logger.debug(
@@ -318,7 +318,7 @@ def run_analysis(df: pd.DataFrame) -> dict[str, Any]:
     }
 
     logger.info(
-        "run_analysis complete — %d models trained, forecasts for years %s",
+        "run_analysis complete - %d models trained, forecasts for years %s",
         len(predictions),
         FORECAST_YEARS,
     )

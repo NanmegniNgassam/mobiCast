@@ -1,4 +1,4 @@
-"""MobiCast — analysis results page (URL: /analyses/<analysis_id>).
+"""MobiCast - analysis results page (URL: /analyses/<analysis_id>).
 
 Contains three result tabs: Corrélations, Prédictions, Classements.
 Prompt 08: Correlations tab implemented.
@@ -31,11 +31,11 @@ dash.register_page(__name__, path_template="/analyses/<analysis_id>")
 # ---------------------------------------------------------------------------
 
 _SOURCE_TYPE_LABELS: dict[str, str] = {
-    "unesco":          "UNESCO — fourni",
-    "oecd":            "OCDE — fourni",
-    "erasmus":         "Erasmus+ — fourni",
-    "default_oecd":    "OCDE — référence par défaut",
-    "default_erasmus": "Erasmus+ — référence par défaut",
+    "unesco":          "UNESCO - fourni",
+    "oecd":            "OCDE - fourni",
+    "erasmus":         "Erasmus+ - fourni",
+    "default_oecd":    "OCDE - référence par défaut",
+    "default_erasmus": "Erasmus+ - référence par défaut",
 }
 
 _STATUS_MAP: dict[str, tuple[str, str]] = {
@@ -185,7 +185,7 @@ def _build_predictions_tab_stub() -> html.Div:
     return html.Div(
         className="tab-empty-state",
         children=html.P(
-            "Onglet Prédictions — disponible dans la prochaine version.",
+            "Onglet Prédictions - disponible dans la prochaine version.",
             className="tab-empty-text",
         ),
     )
@@ -196,7 +196,7 @@ def _build_rankings_tab_stub() -> html.Div:
     return html.Div(
         className="tab-empty-state",
         children=html.P(
-            "Onglet Classements — disponible dans la prochaine version.",
+            "Onglet Classements - disponible dans la prochaine version.",
             className="tab-empty-text",
         ),
     )
@@ -229,7 +229,7 @@ def layout(analysis_id=None, **_kwargs) -> html.Div:
         return _not_found_page()
 
     # Resolve author display name.
-    author = "—"
+    author = "-"
     if analysis["user_id"]:
         user = get_user_by_id(analysis["user_id"])
         if user:
@@ -276,7 +276,7 @@ def layout(analysis_id=None, **_kwargs) -> html.Div:
     )
 
     # Row count display.
-    row_count_display = "—"
+    row_count_display = "-"
     if analysis["row_count"] is not None:
         row_count_display = f"{analysis['row_count']:,}".replace(",", " ")
 

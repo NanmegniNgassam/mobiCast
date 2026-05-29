@@ -1,4 +1,4 @@
-"""MobiCast — data cleaning and merging pipeline.
+"""MobiCast - data cleaning and merging pipeline.
 
 Loads data from three sources (UNESCO, OECD, Erasmus+), normalises columns,
 filters to African origin countries and European destination countries,
@@ -120,7 +120,7 @@ def _name_to_iso3(name: str) -> str:
     """Resolve a country name string to its ISO-3166-1 alpha-3 code.
 
     Falls back to the first three characters (uppercased) when the name
-    is not in the lookup table — this keeps the pipeline running even
+    is not in the lookup table - this keeps the pipeline running even
     with unexpected spellings, at the cost of incorrect codes for unknowns.
     """
     return _NAME_TO_ISO3.get(str(name).strip().lower(), str(name)[:3].upper())
@@ -289,7 +289,7 @@ def _load_unesco(path: str) -> pd.DataFrame:
         df = df[df[indicator_col] == 26420].copy()
         logger.debug("[UNESCO] %d → %d rows after indicatorId==26420 filter", before, len(df))
     else:
-        logger.warning("[UNESCO] No indicatorId column found — using all rows")
+        logger.warning("[UNESCO] No indicatorId column found - using all rows")
 
     country_col = _detect_column(df, ["geounit"], "UNESCO", "country")
     year_col    = _detect_column(df, ["year"], "UNESCO", "year")
@@ -360,7 +360,7 @@ def _load_oecd(path: str) -> pd.DataFrame:
 
     df = df[df["destination_code"].isin(EUROPEAN_ISO3)]
 
-    # Aggregate to (year, destination) — sum in case of multiple aid categories.
+    # Aggregate to (year, destination) - sum in case of multiple aid categories.
     df = df.groupby(
         ["year", "destination_code", "destination_name"], as_index=False
     )["scholarship_musd"].sum()
@@ -394,7 +394,7 @@ def _load_erasmus(paths: list[str]) -> pd.DataFrame:
         frames.append(sub[["destination_code", "origin_code"]])
 
     if not frames:
-        logger.warning("[Erasmus+] No files loaded — Erasmus+ pairs will be empty")
+        logger.warning("[Erasmus+] No files loaded - Erasmus+ pairs will be empty")
         return pd.DataFrame(columns=["destination_code", "origin_code"])
 
     pairs = (
@@ -463,7 +463,7 @@ def _merge_sources(
         how="left",
     )
 
-    # Aggregate to (year, destination, origin) — remove intra-group duplicates.
+    # Aggregate to (year, destination, origin) - remove intra-group duplicates.
     df = df.groupby(
         ["year", "destination_code", "destination_name", "origin_code", "origin_name"],
         as_index=False,

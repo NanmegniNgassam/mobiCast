@@ -1,4 +1,4 @@
-/* MobiCast — global stylesheet */
+/* MobiCast - global stylesheet */
 
 /* =========================================================================
    Reset & base
@@ -441,7 +441,7 @@ button {
 }
 
 /* =========================================================================
-   Step 2 — Validation cards
+   Step 2 - Validation cards
    ========================================================================= */
 
 .validation-card-header {
@@ -592,7 +592,7 @@ button {
 }
 
 /* =========================================================================
-   Results page — header card
+   Results page - header card
    ========================================================================= */
 
 .results-header-card {
@@ -634,7 +634,7 @@ button {
 }
 
 /* =========================================================================
-   Results page — source files list
+   Results page - source files list
    ========================================================================= */
 
 .source-files-list {
@@ -668,14 +668,14 @@ button {
 }
 
 /* =========================================================================
-   Results page — tabs
+   Results page - tabs
    ========================================================================= */
 
 .results-tabs {
   margin-top: 4px;
 }
 
-/* Dash renders tabs as .tab and .tab--selected — augment with our classes */
+/* Dash renders tabs as .tab and .tab--selected - augment with our classes */
 .results-tab {
   font-size: 14px !important;
   font-weight: 500 !important;
@@ -711,7 +711,7 @@ button {
 }
 
 /* =========================================================================
-   Results page — filter bar
+   Results page - filter bar
    ========================================================================= */
 
 .filter-bar {
@@ -733,7 +733,7 @@ button {
 }
 
 /* =========================================================================
-   Results page — heatmaps grid
+   Results page - heatmaps grid
    ========================================================================= */
 
 .heatmaps-grid {

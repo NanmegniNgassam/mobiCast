@@ -1,4 +1,4 @@
-# MobiCast — Project Context for Claude Code
+# MobiCast - Project Context for Claude Code
 
 ## What is MobiCast?
 
@@ -17,7 +17,7 @@ Persistence: **SQLite** (no external DB server).
 | **Language** | All code, variable names, function names, class names, dict keys, DB table/column names, and comments → **English** |
 | **UI strings** | All labels, button text, user-facing strings → **French** |
 | **Style** | PEP 8 · `snake_case` variables/functions · `PascalCase` classes |
-| **Logging** | No `print()` — use Python `logging` exclusively |
+| **Logging** | No `print()` - use Python `logging` exclusively |
 | **Docstrings** | Every function must have one |
 
 ---
@@ -50,8 +50,8 @@ mobiCast/
 ├── components/
 │   └── auth.py             # LoginManager, User(UserMixin), authenticate_user, sign_out
 ├── pages/
-│   ├── login.py            # /login — username/password form, auth callback
-│   └── new_analysis.py     # /analyses/new — step 1: form+upload  step 2: TODO (prompt 07)
+│   ├── login.py            # /login - username/password form, auth callback
+│   └── new_analysis.py     # /analyses/new - step 1: form+upload  step 2: TODO (prompt 07)
 ├── pipeline/
 │   ├── cleaning.py         # clean_and_merge(), ColumnDetectionError, detect_columns()
 │   └── analysis.py         # run_analysis() → predictions/correlations/rankings dict
@@ -63,7 +63,7 @@ mobiCast/
 
 ---
 
-## config.py — key constants
+## config.py - key constants
 
 | Constant | Env var | Default |
 |----------|---------|---------|
@@ -71,15 +71,15 @@ mobiCast/
 | `DATABASE_PATH` | `DATABASE_PATH` | `/app/db/mobicast.db` |
 | `DATA_DIR` | `DATA_DIR` | `/app/data` |
 | `DEBUG` | `DEBUG` | `false` |
-| `DEFAULTS_DIR` | — | `DATA_DIR/defaults` |
-| `DEFAULT_OECD_PATH` | — | `DEFAULTS_DIR/oecd_scholarships.csv` |
-| `DEFAULT_ERASMUS_PATHS` | — | `[DEFAULTS_DIR/erasmus_mobility.xlsx]` |
-| `TMP_DIR` | — | `DATA_DIR/tmp` |
-| `ANALYSES_DIR` | — | `DATA_DIR/analyses` |
+| `DEFAULTS_DIR` | - | `DATA_DIR/defaults` |
+| `DEFAULT_OECD_PATH` | - | `DEFAULTS_DIR/oecd_scholarships.csv` |
+| `DEFAULT_ERASMUS_PATHS` | - | `[DEFAULTS_DIR/erasmus_mobility.xlsx]` |
+| `TMP_DIR` | - | `DATA_DIR/tmp` |
+| `ANALYSES_DIR` | - | `DATA_DIR/analyses` |
 
 ---
 
-## db/database.py — schema
+## db/database.py - schema
 
 ```sql
 users        (id, username UNIQUE, password_hash, first_name, last_name, created_at)
@@ -102,28 +102,28 @@ condition when gunicorn boots multiple workers simultaneously.
 
 ---
 
-## components/auth.py — authentication
+## components/auth.py - authentication
 
 - `LoginManager` from flask-login, attached to the Flask server via `init_login_manager(server)`
 - `User(UserMixin)` wraps the SQLite row; `login_time` stored in `flask.session`; exposes `display_name` property (full name or username fallback)
-- `PUBLIC_PATHS = {"/login"}` — routes that do not require authentication
-- `authenticate_user(username, password) → User | None` — verifies hash, calls `login_user`
-- `sign_out()` — calls `logout_user`, clears `flask.session["login_time"]`
+- `PUBLIC_PATHS = {"/login"}` - routes that do not require authentication
+- `authenticate_user(username, password) → User | None` - verifies hash, calls `login_user`
+- `sign_out()` - calls `logout_user`, clears `flask.session["login_time"]`
 
 ---
 
-## app.py — root layout and callbacks
+## app.py - root layout and callbacks
 
 **Layout components (always in DOM):**
 
 | ID | Purpose |
 |----|---------|
-| `url` | `dcc.Location(refresh=False)` — current pathname |
-| `redirect` | `dcc.Location(refresh=True)` — triggers full-page reload when `href` is set |
-| `session-store` | `dcc.Store(storage_type="session")` — client-side session cache |
-| `navbar` | `html.Nav` — toggled via CSS class `navbar--hidden` |
-| `navbar-user-info` | `html.Span` — displays `"{username} · connecté à {HH:MM}"` |
-| `logout-button` | `html.Button` — always in DOM (required for callback registration) |
+| `url` | `dcc.Location(refresh=False)` - current pathname |
+| `redirect` | `dcc.Location(refresh=True)` - triggers full-page reload when `href` is set |
+| `session-store` | `dcc.Store(storage_type="session")` - client-side session cache |
+| `navbar` | `html.Nav` - toggled via CSS class `navbar--hidden` |
+| `navbar-user-info` | `html.Span` - displays `"{username} · connecté à {HH:MM}"` |
+| `logout-button` | `html.Button` - always in DOM (required for callback registration) |
 
 **Callbacks:**
 
@@ -141,7 +141,7 @@ in multi-page apps and for `allow_duplicate` outputs).
 ## pages/login.py
 
 - URL: `/login`
-- Simple form: username + password, no clock (removed — no real utility)
+- Simple form: username + password, no clock (removed - no real utility)
 - Login callback outputs to **`redirect`** (root layout component) with `allow_duplicate=True`
 - On success → `href = "/analyses/new"` (full page reload via `refresh=True`)
 - On failure → error message in `#login-error`
@@ -152,15 +152,15 @@ in multi-page apps and for `allow_duplicate` outputs).
 ## pages/new_analysis.py
 
 - URL: `/analyses/new`
-- `layout` is a **function** (not a variable) — generates a fresh `session_id = uuid4().hex` on each visit
-- **Step 1** (PROMPT 06 — done): analysis name + file upload form
+- `layout` is a **function** (not a variable) - generates a fresh `session_id = uuid4().hex` on each visit
+- **Step 1** (PROMPT 06 - done): analysis name + file upload form
   - `dcc.Store(id="current-step")` controls which step is visible
   - `dcc.Store(id="upload-state")` holds saved file paths passed to step 2
   - `dcc.Store(id="new-analysis-session")` holds the per-visit UUID
   - UNESCO upload required; OECD optional; Erasmus+ conditional on a checkbox
   - "Valider les fichiers →" button disabled until name + UNESCO file provided
   - On click: base64-decodes files, saves to `TMP_DIR/{session_id}/`, advances `current-step` to 2
-- **Step 2** (PROMPT 07 — done): visual column validation + pipeline progress bar
+- **Step 2** (PROMPT 07 - done): visual column validation + pipeline progress bar
 
 ---
 
@@ -170,8 +170,8 @@ in multi-page apps and for `allow_duplicate` outputs).
 - `clean_and_merge(unesco_path, oecd_path=None, erasmus_paths=None) → (df, stats)`
   - Returns `df` with columns: `year, destination_code, destination_name, origin_code, origin_name, student_count, scholarship_musd`
   - Returns `stats` dict: `{row_count, duplicates_removed, values_imputed, origin_countries, destination_countries, years_covered}`
-- `detect_columns(df, source_type) → dict` — used by the UI validation step to preview column mapping before launching
-- `ColumnDetectionError` — raised when a mandatory column can't be auto-detected; message names the source + patterns tried
+- `detect_columns(df, source_type) → dict` - used by the UI validation step to preview column mapping before launching
+- `ColumnDetectionError` - raised when a mandatory column can't be auto-detected; message names the source + patterns tried
 
 **Column detection patterns:**
 - UNESCO: `geounit` → origin country; `year` → year; `value` → student count; filters `indicatorId == 26420`
@@ -187,7 +187,7 @@ in multi-page apps and for `allow_duplicate` outputs).
 ## pipeline/analysis.py
 
 **Public API:**
-- `run_analysis(df) → dict` — takes output of `clean_and_merge()`, returns full result dict
+- `run_analysis(df) → dict` - takes output of `clean_and_merge()`, returns full result dict
 - `FORECAST_YEARS = [2024, 2025, 2026, 2027, 2028]`
 - `CORRELATION_COLUMNS = ["Year", "Scholarship_Amount_MUSD", "African_Students_Count"]`
 
@@ -241,11 +241,11 @@ Use `docker compose down -v` to also wipe volumes (resets DB and analysis data).
 | 03 | Auth + login page + navbar | ✅ done | `components/auth.py`, `pages/login.py`, `app.py`, `assets/style.css` |
 | 04 | Cleaning pipeline | ✅ done | `pipeline/cleaning.py` |
 | 05 | Analysis + prediction pipeline | ✅ done | `pipeline/analysis.py` |
-| 06 | New analysis view — form + upload | ✅ done | `pages/new_analysis.py` (replace placeholder) |
-| 07 | New analysis view — validation + progress | ✅ done | `pages/new_analysis.py` (extend) |
-| 08 | Results view — correlations tab | ✅ done | `pages/results.py` |
-| 09 | Results view — predictions tab | ⬜ todo | `pages/results.py` (extend) |
-| 10 | Results view — rankings tab | ⬜ todo | `pages/results.py` (extend) |
+| 06 | New analysis view - form + upload | ✅ done | `pages/new_analysis.py` (replace placeholder) |
+| 07 | New analysis view - validation + progress | ✅ done | `pages/new_analysis.py` (extend) |
+| 08 | Results view - correlations tab | ✅ done | `pages/results.py` |
+| 09 | Results view - predictions tab | ⬜ todo | `pages/results.py` (extend) |
+| 10 | Results view - rankings tab | ⬜ todo | `pages/results.py` (extend) |
 | 11 | History view | ⬜ todo | `pages/history.py` |
 | 12 | Export (CSV + PNG) | ⬜ todo | `pages/results.py` (extend), `requirements.txt` (add kaleido) |
 | 13 | Docker finalization + README | ⬜ todo | `Dockerfile`, `docker-compose.yml`, `config.py`, `README.md` |
@@ -256,11 +256,11 @@ The full prompt text for each step lives in `project.md` at the project root.
 
 ## Key design patterns to continue
 
-- **One callback per concern** — route guard, navbar, logout are separate callbacks
-- **`redirect` Location in root layout** — all redirects (login success, logout, guard)
+- **One callback per concern** - route guard, navbar, logout are separate callbacks
+- **`redirect` Location in root layout** - all redirects (login success, logout, guard)
   go through this single component; use `allow_duplicate=True` on non-primary callbacks
-- **CSS utility classes** — `card`, `page-header`, `page-title`, `btn-primary`,
+- **CSS utility classes** - `card`, `page-header`, `page-title`, `btn-primary`,
   `btn-secondary`, `badge badge--{green|orange|red|blue}` are defined in `style.css`
-- **`analyses/{id}/results.json`** — completed pipeline results are stored as JSON
+- **`analyses/{id}/results.json`** - completed pipeline results are stored as JSON
   under `ANALYSES_DIR/{id}/results.json`; result pages read from this file, not the DB
-- **No f-strings in SQL** — always use bound parameters `(?, ?, …)`
+- **No f-strings in SQL** - always use bound parameters `(?, ?, …)`

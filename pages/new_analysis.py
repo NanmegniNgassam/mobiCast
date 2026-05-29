@@ -1,4 +1,4 @@
-"""MobiCast — new analysis page (URL: /analyses/new).
+"""MobiCast - new analysis page (URL: /analyses/new).
 
 Step 1: analysis name + file upload form.
 Step 2: visual column validation + pipeline launch.
@@ -137,7 +137,7 @@ def _save_upload(contents: str, filename: str, session_id: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Step-2 helpers — validation cards
+# Step-2 helpers - validation cards
 # ---------------------------------------------------------------------------
 
 
@@ -181,7 +181,7 @@ def _build_source_card(source_type: str, file_path: str) -> tuple[html.Div, bool
             className="card",
             children=[
                 html.Div(className="validation-card-header", children=[
-                    html.Span(f"{title} — {filename}", className="validation-source-title"),
+                    html.Span(f"{title} - {filename}", className="validation-source-title"),
                     html.Span("Erreur de lecture", className="badge badge--red"),
                 ]),
                 html.P(
@@ -245,7 +245,7 @@ def _build_source_card(source_type: str, file_path: str) -> tuple[html.Div, bool
         className="card",
         children=[
             html.Div(className="validation-card-header", children=[
-                html.Span(f"{title} — {filename}", className="validation-source-title"),
+                html.Span(f"{title} - {filename}", className="validation-source-title"),
                 badge,
             ]),
             html.Details(
@@ -492,7 +492,7 @@ def layout() -> html.Div:
                         children=[html.H1("Nouvelle analyse", className="page-title")],
                     ),
 
-                    # Section 1 — analysis name
+                    # Section 1 - analysis name
                     html.Div(
                         className="card",
                         children=[
@@ -513,7 +513,7 @@ def layout() -> html.Div:
                         ],
                     ),
 
-                    # Section 2 — data sources
+                    # Section 2 - data sources
                     html.Div(
                         className="card",
                         children=[
@@ -563,7 +563,7 @@ def layout() -> html.Div:
                                             html.Div(
                                                 className="warning-banner",
                                                 children=[
-                                                    html.Strong("⚠ Attention — "),
+                                                    html.Strong("⚠ Attention - "),
                                                     "Ce fichier définit les paires de pays "
                                                     "utilisées par le modèle. Une mise à jour "
                                                     "incorrecte peut affecter les résultats. "
@@ -616,7 +616,7 @@ def layout() -> html.Div:
                     ),
                     # Dynamic validation cards populated by render_validation_cards.
                     html.Div(id="validation-cards-container"),
-                    # Fixed action row — IDs must be stable for callbacks.
+                    # Fixed action row - IDs must be stable for callbacks.
                     html.Div(
                         className="action-row",
                         style={"marginTop": "8px"},
@@ -631,7 +631,7 @@ def layout() -> html.Div:
                             ),
                         ],
                     ),
-                    # Progress section — revealed when the pipeline starts.
+                    # Progress section - revealed when the pipeline starts.
                     html.Div(
                         id="progress-section",
                         className="progress-section",
@@ -674,7 +674,7 @@ def layout() -> html.Div:
 
 
 # ---------------------------------------------------------------------------
-# Callbacks — step 1 (unchanged from prompt 06)
+# Callbacks - step 1 (unchanged from prompt 06)
 # ---------------------------------------------------------------------------
 
 
@@ -821,7 +821,7 @@ def route_steps(step: int) -> tuple[dict, dict]:
 
 
 # ---------------------------------------------------------------------------
-# Callbacks — step 2
+# Callbacks - step 2
 # ---------------------------------------------------------------------------
 
 
