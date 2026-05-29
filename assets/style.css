@@ -590,3 +590,200 @@ button {
   padding: 2px 10px;
   white-space: nowrap;
 }
+
+/* =========================================================================
+   Results page — header card
+   ========================================================================= */
+
+.results-header-card {
+  margin-bottom: 20px;
+}
+
+.results-header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.results-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.results-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.results-meta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+}
+
+.results-meta-value {
+  font-size: 14px;
+  color: #1a1a2e;
+  font-weight: 500;
+}
+
+/* =========================================================================
+   Results page — source files list
+   ========================================================================= */
+
+.source-files-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.source-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.source-file-type {
+  color: #6b7280;
+  min-width: 220px;
+  font-weight: 500;
+}
+
+.source-file-name {
+  color: #1a1a2e;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   Results page — tabs
+   ========================================================================= */
+
+.results-tabs {
+  margin-top: 4px;
+}
+
+/* Dash renders tabs as .tab and .tab--selected — augment with our classes */
+.results-tab {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+  border-top: 3px solid transparent !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #e8eaed !important;
+  background: #f9fafb !important;
+  padding: 10px 20px !important;
+}
+
+.results-tab--selected {
+  font-weight: 600 !important;
+  color: #4361ee !important;
+  border-top: 3px solid #4361ee !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+
+.tab-content {
+  padding: 20px 0;
+}
+
+.tab-empty-state {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.tab-empty-text {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* =========================================================================
+   Results page — filter bar
+   ========================================================================= */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-bar .form-label {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.filter-dropdown {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* =========================================================================
+   Results page — heatmaps grid
+   ========================================================================= */
+
+.heatmaps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+.heatmap-wrapper {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* =========================================================================
+   404 not-found page
+   ========================================================================= */
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.not-found-inner {
+  text-align: center;
+}
+
+.not-found-title {
+  font-size: 80px;
+  font-weight: 700;
+  color: #e8eaed;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.not-found-text {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.not-found-link {
+  font-size: 14px;
+  color: #4361ee;
+  font-weight: 500;
+}
+
+.not-found-link:hover {
+  text-decoration: underline;
+}

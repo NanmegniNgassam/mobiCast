@@ -243,7 +243,7 @@ Use `docker compose down -v` to also wipe volumes (resets DB and analysis data).
 | 05 | Analysis + prediction pipeline | ✅ done | `pipeline/analysis.py` |
 | 06 | New analysis view — form + upload | ✅ done | `pages/new_analysis.py` (replace placeholder) |
 | 07 | New analysis view — validation + progress | ✅ done | `pages/new_analysis.py` (extend) |
-| 08 | Results view — correlations tab | ⬜ todo | `pages/results.py` |
+| 08 | Results view — correlations tab | ✅ done | `pages/results.py` |
 | 09 | Results view — predictions tab | ⬜ todo | `pages/results.py` (extend) |
 | 10 | Results view — rankings tab | ⬜ todo | `pages/results.py` (extend) |
 | 11 | History view | ⬜ todo | `pages/history.py` |
