@@ -750,6 +750,270 @@ button {
 }
 
 /* =========================================================================
+   Results page - predictions tab filters
+   ========================================================================= */
+
+.predictions-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 240px;
+}
+
+.origin-filter-note {
+  font-size: 12px;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e8eaed;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* =========================================================================
+   Results page - model reliability table
+   ========================================================================= */
+
+.reliability-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.rt-header {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  border-bottom: 2px solid #e8eaed;
+  white-space: nowrap;
+}
+
+.rt-header--num { text-align: right; }
+
+.rt-cell {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1a1a2e;
+  vertical-align: middle;
+}
+
+.rt-cell--num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+}
+
+.reliability-table tbody tr:last-child .rt-cell { border-bottom: none; }
+.reliability-table tbody tr:hover .rt-cell { background: #f9fafb; }
+
+/* =========================================================================
+   Results page - rankings tab
+   ========================================================================= */
+
+.rankings-year-selector {
+  margin-bottom: 20px;
+}
+
+.year-radio {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.year-radio label {
+  padding: 5px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background: #ffffff;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.year-radio input[type="radio"] { display: none; }
+
+.year-radio input[type="radio"]:checked + label {
+  background: #4361ee;
+  color: #ffffff;
+  border-color: #4361ee;
+}
+
+/* Global totals strip */
+.rankings-global {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.rankings-global-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.rankings-global-evolution {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Evolution colours (shared with predictions tab) */
+.evolution--up   { color: #16a34a; }
+.evolution--down { color: #dc2626; }
+.evolution--flat { color: #9ca3af; }
+
+.evolution-badge {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Students column — relative progress bar */
+.rt-cell--students { min-width: 180px; }
+
+.students-bar-container {
+  position: relative;
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.students-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(67, 97, 238, 0.08);
+  border-radius: 3px;
+  min-width: 2px;
+}
+
+.students-value {
+  position: relative;
+  font-variant-numeric: tabular-nums;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: #1a1a2e;
+  padding-left: 6px;
+}
+
+/* Rank badges — top 3 */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rank-badge--1 { background: #fef9c3; color: #a16207; }
+.rank-badge--2 { background: #f1f5f9; color: #475569; }
+.rank-badge--3 { background: #fef3c7; color: #92400e; }
+
+/* Top-3 row highlight */
+.rankings-row--top3 .rt-cell { background: #fafbff; }
+.rankings-row--top3:hover .rt-cell { background: #f0f3ff !important; }
+
+/* =========================================================================
+   History page
+   ========================================================================= */
+
+.history-table {
+  width: 100%;
+}
+
+.history-cell--name {
+  font-weight: 500;
+  max-width: 260px;
+  word-break: break-word;
+}
+
+.history-cell--date {
+  white-space: nowrap;
+}
+
+.history-cell--sources {
+  font-size: 12px;
+  color: #6b7280;
+  max-width: 220px;
+}
+
+.history-cell-muted {
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.history-action-btn {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.history-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.history-empty-text {
+  font-size: 15px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+/* =========================================================================
+   Export section
+   ========================================================================= */
+
+.export-section {
+  margin-top: 8px;
+}
+
+.export-btn-group {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.export-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.export-item-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.export-btn {
+  font-size: 13px;
+  padding: 7px 16px;
+  white-space: nowrap;
+}
+
+/* =========================================================================
    404 not-found page
    ========================================================================= */
 

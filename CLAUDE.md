@@ -244,11 +244,11 @@ Use `docker compose down -v` to also wipe volumes (resets DB and analysis data).
 | 06 | New analysis view - form + upload | ✅ done | `pages/new_analysis.py` (replace placeholder) |
 | 07 | New analysis view - validation + progress | ✅ done | `pages/new_analysis.py` (extend) |
 | 08 | Results view - correlations tab | ✅ done | `pages/results.py` |
-| 09 | Results view - predictions tab | ⬜ todo | `pages/results.py` (extend) |
-| 10 | Results view - rankings tab | ⬜ todo | `pages/results.py` (extend) |
-| 11 | History view | ⬜ todo | `pages/history.py` |
-| 12 | Export (CSV + PNG) | ⬜ todo | `pages/results.py` (extend), `requirements.txt` (add kaleido) |
-| 13 | Docker finalization + README | ⬜ todo | `Dockerfile`, `docker-compose.yml`, `config.py`, `README.md` |
+| 09 | Results view - predictions tab | ✅ done | `pages/results.py` |
+| 10 | Results view - rankings tab | ✅ done | `pages/results.py` |
+| 11 | History view | ✅ done | `pages/history.py` |
+| 12 | Export (CSV + PNG) | ✅ done | `pages/results.py`, `requirements.txt` |
+| 13 | Docker finalization + README | ✅ done | `Dockerfile`, `docker-compose.yml`, `config.py`, `README.md` |
 
 The full prompt text for each step lives in `project.md` at the project root.
 

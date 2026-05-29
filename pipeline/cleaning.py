@@ -255,7 +255,7 @@ def _read_file(path: str, source_name: str) -> pd.DataFrame:
     if ext in (".xlsx", ".xls"):
         df = pd.read_excel(path, engine="openpyxl")
     else:
-        df = pd.read_csv(path, low_memory=False)
+        df = pd.read_csv(path, low_memory=False, on_bad_lines="skip")
     logger.debug("[%s] Loaded %d rows × %d cols from %s", source_name, len(df), len(df.columns), path)
     return df
 
